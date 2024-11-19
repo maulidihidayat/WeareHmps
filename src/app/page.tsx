@@ -1,101 +1,111 @@
+import Navbar from "@/components/Navbar";
 import Image from "next/image";
-
+import image from "@/source/image";
+import Desc from "@/components/Desc";
+import Visimisi from "@/components/Visimisi";
+import Devision from "@/components/Devision";
+import YoutubeBanner from "@/components/YoutubeBanner";
+import Main from "@/components/Main";
+import Footer from "@/components/Footer";
+import Link from "next/link";
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+    <div>
+      <Navbar />
+      <Main />
+      {/* Halaman Utaman */}
+      {/* end */}
+      <main className="flex justify-center items-center">
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+          src={image.gambar2}
+          alt="Descriptive alt text" // Provide a meaningful alt text
+          width={3416}
+          height={1282.6}
+          className="object-cover" // Optional: Add any additional styling
         />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      {/* deskripsi pendidikan informatika */}
+
+      <Desc />
+
+      {/* end */}
+      <div className="flex justify-center mt-28 bg-bgproduk h-64 p-8 border-2 border-secondary border-b-[7px]">
+        <Visimisi
+          deskripsi="Menjadi wadah kesatuan organisasi mahasiswa Sistem Informasi seluruh Indonesia yang bertujuan untuk melahirkan mahasiswa Sistem Informasi yang berwawasan IPTEK dan IMTAQ serta profesional dibidangnya."
+          nama="Visi"
+        />
+        <Visimisi
+          deskripsi="Menjadi wadah kesatuan organisasi mahasiswa Sistem Informasi seluruh Indonesia yang bertujuan untuk melahirkan mahasiswa Sistem Informasi yang berwawasan IPTEK dan IMTAQ serta profesional dibidangnya."
+          nama="Misi"
+        />
+      </div>
+      {/* Devision */}
+      <Image
+        src={image.star}
+        alt="Stars decoration"
+        className="absolute mt-96 "
+      />
+      <Image
+        src={image.star}
+        alt="Stars decoration"
+        className="absolute right-0  mt-20"
+      />
+      <h1 className="text-[40px] text-secondary font-bold mt-32 text-center  ">
+        Devisi Kami di{" "}
+        <span className="text-primary">Hmps Pendidikan Informatika</span>
+      </h1>
+      <div className="flex gap-4 p-10 mt-2">
+        <h1 className="fixed">Devisi</h1>
+        <Devision
+          gambar={image.Svg1}
+          judul="Keagamaan"
+          keterangan="Devisi yang berfokus pada kegiatan yang berkaitan dengan keagamaan "
+          ketua="Berbudaya Santri"
+        />
+        <Devision
+          gambar={image.Svg1}
+          judul="Humas"
+          keterangan="Devisi yang berfokus pada pendekatan kepada masyarakat pada umumnya"
+          ketua="Kerja Kerja Kerja"
+        />
+        <Devision
+          gambar={image.Svg1}
+          judul="Sosial"
+          keterangan="Devisi yang berfokus pada kegiatan di masyarakat dan terjun langsung"
+          ketua="In harmonia"
+        />
+        <Devision
+          gambar={image.Svg1}
+          judul="Medinfo"
+          keterangan="Devisi yang berfokus pada media informasi Hmps Pendidikan Informatika "
+          ketua="Available"
+        />
+      </div>
+
+      <div className="text-center mt-10">
+        <h1 className="text-[40px] text-primary font-bold mt-10  ">
+          Jargon Kami
+        </h1>
+        <p className="text-success text-[18px] leading-relaxed">
+          Berinovasi , Berkontribusi dan Berprestasi
+        </p>
+      </div>
+
+      <div className="text-center mt-28">
+        <h1 className="text-[40px] text-primary font-bold mt-10  ">
+          Hmps Pendidikan Informatika di{" "}
+          <span className="text-secondary">Youtube</span>
+        </h1>
+        <div className="flex justify-center gap-4 mt-4 ">
+          <YoutubeBanner source="https://www.youtube.com/embed/a_iQqN1Hp74?si=A_3FDBsaz781LBFv" />
+          <YoutubeBanner source="https://www.youtube.com/embed/wYzEwB7XDGE?si=i3PxBaLbEHuzux7C" />
+        </div>
+        <div className="flex justify-center gap-4 mt-4 mb-28">
+          <YoutubeBanner source="https://www.youtube.com/embed/eLpdtQJ8qMU?si=0yTvwwq0jpsPa6bE" />
+          <YoutubeBanner source="https://www.youtube.com/embed/hc11T89sGt0?si=AF_yv6llTwbwc2BW" />
+        </div>
+      </div>
+      <Footer className="" />
     </div>
   );
 }
