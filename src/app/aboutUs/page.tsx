@@ -1,8 +1,8 @@
 import image from "@/source/image";
+import { Instagram } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
 import React from "react";
-import { BsInstagram } from "react-icons/bs";
-import { CgInstagram } from "react-icons/cg";
+
 
 // Reusable components
 interface SectionHeader {
@@ -37,7 +37,7 @@ const ProfileCard : React.FC<ProfileCard> = ({ name, program, role, imageSrc, in
       <p className="text-success text-[16px] leading-relaxed">Prodi: {program}</p>
       <p className="text-success text-[16px] leading-relaxed">{role}</p>
       <a href="#" className="flex items-center space-x-2">
-        <BsInstagram />
+        <Instagram />
         <p className="font-semibold text-4 text-primary">@{instagram}</p>
       </a>
     </div>

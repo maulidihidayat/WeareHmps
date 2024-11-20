@@ -5,9 +5,9 @@ import React, { useState, useEffect } from "react";
 const Navbar = () => {
   const navItems = [
     { name: "Home", href: "/" },
-    { name: "News", href: "News" },
+    { name: "Berita", href: "News" },
     { name: "Kritik & Saran", href: "Saran" },
-    { name: "About Us", href: "aboutUs" },
+    { name: "Tentang Kami", href: "aboutUs" },
   ];
 
   const [scrolled, setScrolled] = useState(false);
@@ -54,7 +54,7 @@ const Navbar = () => {
               onClick={() => alert("Are you sure  want to login?")}
               className="relative bg-primary text-white py-4 px-3 rounded-2xl border-b-[7px] border-secondary border-2 hover:bg-orange-600 hover:border-b-[9px] transition-transform transform duration-300 z-10"
             >
-              <span className="font-bold">Join Us Now</span>
+              <span className="font-bold">Gabung Sekarang</span>
             </button>
             </Link>
           </div>

@@ -83,7 +83,7 @@ const Home = () => {
           </div>
 
           <h3 className="mt-4 text-lg font-bold text-success">
-            Yuk gabung menjadi salah satu bagian dari HMPS Pendidikan
+            Yuk gabung menjadi salah satu bagian dari kami di HMPS Pendidikan
             Infomratika Universitas Hamzanwadi
           </h3>
 
