@@ -18,6 +18,7 @@ import ririn from './members/Ririn Robiatul Husnaeni-Acara.jpg'
 import putri from './members/Putri Rifi Natania (HUMAS).jpg'
 import notFound from './svg/somai-lp-2.svg'
 import vektor from './svg/Vector.svg'
+import openhand from './svg/openhand.png'
 
 
 
@@ -42,7 +43,8 @@ const image = {
     ririn,
     putri,
     notFound,
-    vektor
+    vektor,
+    openhand
 
 }
 export default image

@@ -8,4 +8,15 @@ body {
   color: var(--foreground);
   background-image: url('https://somai.id/wp-content/uploads/2023/11/Landing-Page-1.svg');
   font-family: Inter , 'san-serif';
+  cursor: url('/src/source/svg/openhand.png');
+}
+
+html{
+  scroll-behavior: smooth;
+}
+* {
+  ::selection {
+    background: #ffbbf0;
+    color: #1d2c2a;
+  }
 }

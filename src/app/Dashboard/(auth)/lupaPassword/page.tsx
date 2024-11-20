@@ -16,7 +16,7 @@ const page = () => {
           Masukkan Email
         </h1>
         <p className="text-[18px] text-success">
-          Masukkan email di bawah ini biar nanti mimin kirimin link buat atur ulang kata sandi ya 😋
+          Masukkan email di bawah ini biar nanti mimin kirimin link buat atur ulang kata sandi kamu ya 😋
         </p>
         <form className="flex flex-col mt-4 space-y-4">
           <div>
