@@ -1,6 +1,61 @@
+"use client";
+import InputField from "@/components/InputField";
+import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
+import {
+  FieldValues,
+  FormProvider,
+  FormSubmitHandler,
+  SubmitHandler,
+  useForm,
+} from "react-hook-form";
+import { z } from "zod";
+
+const registrasiSchema = z.object({
+  name: z.string().min(5, { message: "Mohon email diisi dengan benar yaa!" }),
+  nim: z.string().min(5, { message: "Nim kamu harus diisi yaa!" }),
+  grade: z.string().min(1, { message: "Harus diisi yaa!" }),
+  year: z.string().min(1, { message: "Harus diisi yaa!" }),
+  email: z.string().email({ message: "Email yang kamu masukkan salah!" }),
+  devision: z.string().min(5, { message: "Harus diisi yaa!" }),
+  reason: z.string().min(5, { message: "Harus diisi yaa!" }),
+});
+
+interface Component {
+  name: string;
+  nim: string;
+  year: string;
+  grade: string;
+  email: string;
+  devision: string;
+  reason: string;
+}
 
 const page = () => {
+  const methods = useForm<z.infer<typeof registrasiSchema>>({
+    defaultValues: {
+      name: "",
+      nim: "",
+      year: "",
+      grade: "",
+      email: "",
+      devision: "",
+      reason: "",
+    },
+    mode: "all",
+    resolver: zodResolver(registrasiSchema),
+  });
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = methods;
+  const onSave = (data: FieldValues) => {
+    console.log(data);
+  };
+
+
+
   return (
     <div>
       <div className="flex justify-center h-auto mb-10 ml-32">
@@ -9,143 +64,105 @@ const page = () => {
             Registration Member
           </h4>
           <hr className="border-t-2  border-gray-300" />
-          <form className="flex space-x-10 ">
-            {/* Full Name and */}
-            <div className="mb-6 space-y-4">
-              {/* Full Name */}
-              <div className="w-[335px]">
-                <label
-                  htmlFor="fullname"
-                  className="block text-secondary font-bold mt-2"
-                >
-                  Nama Lengkap
-                </label>
-                <input
+          <FormProvider {...methods}>
+            <form
+              className="flex space-x-10 justify-center mt-6 "
+              onSubmit={handleSubmit(onSave)}
+            >
+              {/* Full Name and */}
+              <div className="mb-6 space-y-4 ">
+                {/* Full Name */}
+                <InputField
+                  label="Nama Lengkap"
+                  name="name"
+                  placeholder="Nama Kamu"
+                  register={register}
                   type="text"
-                  id="fullname"
-                  required
-                  placeholder="Udinsarudin"
-                  className="w-full p-3 border-2 text-secondary border-secondary rounded-xl focus:outline-none focus:ring-2 focus:ring-primary"
+                  error={errors.name}
                 />
-              </div>
 
-              {/* Nomor Induk */}
-              <div className="w-[335px]">
-                <label
-                  htmlFor="nomor induk"
-                  className="block text-secondary font-bold mt-2"
-                >
-                  Nim
-                </label>
-                <input
-                  type="nomor induk"
-                  id="nomor induk"
-                  required
-                  placeholder="210305002"
-                  className="w-full p-3 border-2 text-secondary border-secondary rounded-xl focus:outline-none focus:ring-2 focus:ring-primary"
+                {/* Nomor Induk */}
+                <InputField
+                  label="Nomor Induk Mahasiswa"
+                  name="nim"
+                  placeholder="Nim Kamu"
+                  register={register}
+                  type="text"
+                  error={errors.nim}
                 />
-              </div>
 
-              {/* Tahun */}
-              <div className="w-[335px]">
-                <label
-                  htmlFor="year"
-                  className="block text-secondary font-bold mt-2"
-                >
-                  Angkatan Tahun
-                </label>
-                <input
-                  type="year"
-                  id="year"
-                  required
-                  placeholder="2021"
-                  className="w-full p-3 border-2 text-secondary border-secondary rounded-xl focus:outline-none focus:ring-2 focus:ring-primary"
+                {/* Tahun */}
+                <InputField
+                  label="Angkatan"
+                  name="year"
+                  placeholder="Angkatan Kamu"
+                  register={register}
+                  type="text"
+                  error={errors.year}
                 />
-              </div>
 
-              {/* Class */}
-              <div className="w-[335px]">
-                <label
-                  htmlFor="phone"
-                  className="block text-secondary font-bold mt-2"
-                >
-                  Kelas
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  required
-                  placeholder="A"
-                  className="w-full p-3 border-2 text-secondary border-secondary rounded-xl focus:outline-none focus:ring-2 focus:ring-primary"
+                {/* Class */}
+                <InputField
+                  label="Kelas"
+                  name="grade"
+                  placeholder="Kelas Kamu"
+                  register={register}
+                  type="text"
+                  error={errors.grade}
                 />
+
+                {/* Email */}
               </div>
 
-              {/* Email */}
-            </div>
-              
-
-            {/* Devision and Reason */}
-            <div className="space-y-4 mb-6">
-            <div className="w-[335px]">
-                <label
-                  htmlFor="email"
-                  className="text-secondary font-bold mt-2"
-                >
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  required
-                  placeholder="ahmadhapinuddin@gmail.com"
-                  className="w-full p-3 border-2 text-secondary border-secondary rounded-xl focus:outline-none focus:ring-2 focus:ring-primary"
+              {/* Devision and Reason */}
+              <div className="space-y-4 mb-6">
+                <InputField
+                  label="Email"
+                  name="email"
+                  placeholder="Email Kamu"
+                  register={register}
+                  type="text"
+                  error={errors.email}
                 />
-              </div>
-              {/* Devision */}
-              <div className="w-[335px]">
-                <label
-                  htmlFor="email"
-                  className="block text-secondary font-bold mt-2"
-                >
-                  Devisi
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  required
-                  placeholder="Divisi Agama"
-                  className="w-full p-3 border-2 text-secondary border-secondary rounded-xl focus:outline-none focus:ring-2 focus:ring-primary"
+                {/* Devision */}
+                <InputField
+                  label="Devisi"
+                  name="devision"
+                  placeholder="Pilih Devisimu"
+                  register={register}
+                  type="select"
+                  error={errors.devision}
+                  options={[
+                    { value: "Agama", label: "Devisi Agama" },
+                    { value: "Sosial", label: "Devisi Sosial" },
+                    { value: "Humas", label: "Humas" },
+                    { value: "Kominfo", label: "Kominfo" },
+                  ]}
                 />
-              </div>
 
-              {/* Reason */}
-              <div className="w-[335px]">
-                <label
-                  htmlFor="bio"
-                  className="mt-2 block text-secondary font-bold"
-                >
-                  Reason
-                </label>
-                <textarea
-                  id="bio"
-                  required
-                  placeholder="Write something about yourself"
-                  className="w-full p-3 border-2 text-secondary border-secondary rounded-xl focus:outline-none focus:ring-2 focus:ring-primary"
-                  rows={3}
-                ></textarea>
-              </div>
+                {/* Reason */}
 
-              {/* Submit Button */}
-              <div className="flex justify-end">
-                <button
-                  type="submit"
-                  className=" w-[142px] border-b-[7px] bg-primary text-white hover:border-b-[6px] border-secondary border-2 font-bold py-3 px-4 rounded-xl  focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
-                >
-                  Submit
-                </button>
+                <InputField
+                  label="Alasan Kamu Bergabung"
+                  name="reason"
+                  placeholder="Tulis alasan Kamu disini"
+                  register={register}
+                  type="textarea"
+                  error={errors.reason}
+                />
+
+                {/* Submit Button */}
+                <div className="flex justify-end">
+                  <button
+                    type="submit"
+                    className=" w-[142px] border-b-[7px] bg-primary text-white hover:border-b-[6px] border-secondary border-2 font-bold py-3 px-4 rounded-xl  focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
+                  >
+                    Submit
+                  </button>
+                </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </FormProvider>
         </div>
       </div>
     </div>

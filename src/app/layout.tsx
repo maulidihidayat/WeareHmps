@@ -4,9 +4,25 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import { SessionProvider } from "next-auth/react";
+import SessionWrapper from "@/components/SessionWrapper";
 
 // Load the Inter font from Google Fonts
 const inter = Inter({
+  weight: ["400", "500", "700", "900"],
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-geist-inter",
+});
+// const roboto = Inter({
+//   weight: ["400", "500", "700", "900"],
+//   style: ["normal", "italic"],
+//   subsets: ["latin"],
+//   display: "swap",
+//   variable: "--font-geist-inter",
+// });
+const Parkinsans = Inter({
   weight: ["400", "500", "700", "900"],
   style: ["normal", "italic"],
   subsets: ["latin"],
@@ -40,8 +56,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} antialiased`}>{children}</body>
-    </html>
+    <SessionWrapper>
+      <html lang="en">
+        <body className={`${inter.variable} antialiased`}>{children}</body>
+      </html>
+    </SessionWrapper>
   );
 }

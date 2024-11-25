@@ -7,8 +7,9 @@ import Devision from "@/components/Devision";
 import YoutubeBanner from "@/components/YoutubeBanner";
 import Main from "@/components/Main";
 import Footer from "@/components/Footer";
-import Link from "next/link";
-export default function Home() {
+import { AppProps } from "next/app";
+import { SessionProvider } from "next-auth/react";
+export default function Home({ Component, pageProps }: AppProps) {
   return (
     <div>
       <Navbar />
